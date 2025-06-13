@@ -48,7 +48,10 @@ chaves_modelo = [
 ]
 
 # Selectbox para escolher prato amigável
-prato_selecionado = st.selectbox("Prato servido", ['Nenhum selecionado'] + nomes_visiveis)
+prato_selecionado = st.selectbox(
+    "Prato servido (escolha o prato que mais se aproxima do que foi servido):",
+    ['Nenhum selecionado'] + nomes_visiveis
+)
 
 # Inicializa todos pratos com zero
 pratos_input = {chave: 0 for chave in chaves_modelo}
@@ -60,7 +63,6 @@ if prato_selecionado != 'Nenhum selecionado':
 st.markdown("### Informe as quantidades vendidas nos 5 dias úteis anteriores")
 st.write(
     "Preencha as quantidades de refeições vendidas nos 5 dias úteis anteriores (sábado e domingo não entram na análise). "
-    "Por exemplo, se hoje é segunda, informe as quantidades da semana passada, excluindo o final de semana."
 )
 
 cols = st.columns(5)
