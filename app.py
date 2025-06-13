@@ -9,7 +9,7 @@ modelo = joblib.load('modelo_xgboost.pkl')
 st.title("Previsão de Quantidade de Refeições")
 
 # Checkbox para Férias
-ferias = st.checkbox('Estamos em período de férias?')
+ferias = st.checkbox('Período de férias?')
 
 # Radio exclusivo para condição do feriado
 feriado_opcao = st.radio(
