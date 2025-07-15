@@ -22,10 +22,13 @@ feriado = 1 if feriado_opcao == 'Feriado' else 0
 pre_feriado = 1 if feriado_opcao == 'Pré-feriado' else 0
 pos_feriado = 1 if feriado_opcao == 'Pós-feriado' else 0
 
-# Inputs numéricos
-dia_semana = st.slider('Qual o dia da semana? (1=Segunda, 5=Sexta)', 1, 5, 1)
-mes = st.slider('Qual o mês do ano?', 1, 12, 1)
-dia_semana_modelo = dia_semana - 1  # ajuste para 0-based
+# Selectbox para dia da semana
+dias_semana_opcoes = ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado', 'Domingo']
+dia_semana_str = st.selectbox('Qual o dia da semana?', dias_semana_opcoes)
+dia_semana = dias_semana_opcoes.index(dia_semana_str)
+
+# Selectbox para mês
+mes = st.selectbox('Qual o mês do ano?', list(range(1, 13)))
 
 # Lista amigável para o usuário escolher
 nomes_visiveis = [
@@ -60,13 +63,13 @@ if prato_selecionado != 'Nenhum selecionado':
     idx = nomes_visiveis.index(prato_selecionado)
     pratos_input[chaves_modelo[idx]] = 1
 
+# Entrada de dias anteriores
 st.markdown("### Informe as quantidades vendidas nos 5 dias úteis anteriores")
 st.write(
-    "Preencha as quantidades de refeições vendidas nos 5 dias úteis anteriores (sábado e domingo não entram na análise). "
+    "Preencha as quantidades de refeições vendidas nos 5 dias úteis anteriores (sábado e domingo não entram na análise)."
 )
 
 cols = st.columns(5)
-
 quantidades = {}
 for i in range(5):
     with cols[i]:
@@ -74,27 +77,28 @@ for i in range(5):
         quantidades[f'POLO_QUANTIDADE_{dia}'] = st.number_input(
             f"{dia} dia{'s' if dia > 1 else ''} atrás",
             min_value=0, step=1, format="%d",
-            value=0  # default 0 para já ser obrigatório
+            value=0
         )
 
+# Botão de previsão
 if st.button("Prever quantidade"):
-    # Validar seleção do prato
     if prato_selecionado == 'Nenhum selecionado':
         st.error("Por favor, selecione o prato servido antes de continuar.")
+    elif feriado == 1 or dia_semana in [5, 6]:  # Sábado = 5, Domingo = 6
+        st.warning("Neste dia não há venda de quentinhas. Previsão automática: 0")
+        st.success("Previsão da quantidade: 0")
     else:
         entrada = {
             'É_FÉRIAS': int(ferias),
             'FERIADO': int(feriado),
             'PRÉ_FERIADO': int(pre_feriado),
             'PÓS_FERIADO': int(pos_feriado),
-            'DIA_SEMANA': dia_semana_modelo,
+            'DIA_SEMANA': dia_semana,
             'MES': mes
         }
         entrada.update(pratos_input)
         entrada.update(quantidades)
 
         entrada_df = pd.DataFrame([entrada])
-
         pred = modelo.predict(entrada_df)
-
         st.success(f'Previsão da quantidade: {pred[0]:.0f}')
