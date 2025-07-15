@@ -20,6 +20,22 @@ dias_semana_pt = {
     'Sunday': 'Domingo'
 }
 
+# Dicionário para traduzir meses para português
+meses_pt = {
+    'January': 'Janeiro',
+    'February': 'Fevereiro',
+    'March': 'Março',
+    'April': 'Abril',
+    'May': 'Maio',
+    'June': 'Junho',
+    'July': 'Julho',
+    'August': 'Agosto',
+    'September': 'Setembro',
+    'October': 'Outubro',
+    'November': 'Novembro',
+    'December': 'Dezembro'
+}
+
 # Função para obter os últimos n dias úteis antes de uma data base
 def dias_uteis_anteriores(data_base, n=5):
     dias_uteis = []
@@ -35,8 +51,9 @@ def dias_uteis_anteriores(data_base, n=5):
 data_base = st.date_input("Selecione a data da previsão:", datetime.today())
 
 # Imprime o dia do mês e o dia da semana em português para conferência
+nome_mes_escolhido = meses_pt[data_base.strftime("%B")]
 nome_dia_escolhido = dias_semana_pt[data_base.strftime("%A")]
-st.markdown(f"**Data selecionada:** {data_base.day} de {data_base.strftime('%B')} ({nome_dia_escolhido})")
+st.markdown(f"**Data selecionada:** {data_base.day} de {nome_mes_escolhido} ({nome_dia_escolhido})")
 
 # Determinar automaticamente o dia da semana e o mês (para o modelo)
 dia_semana = data_base.weekday()  # 0=segunda, 6=domingo
