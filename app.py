@@ -9,6 +9,17 @@ modelo = joblib.load('modelo_xgboost.pkl')
 
 st.title("Previsão de Quantidade de Refeições")
 
+# Dicionário para traduzir dias da semana
+dias_semana_pt = {
+    'Monday': 'Segunda-feira',
+    'Tuesday': 'Terça-feira',
+    'Wednesday': 'Quarta-feira',
+    'Thursday': 'Quinta-feira',
+    'Friday': 'Sexta-feira',
+    'Saturday': 'Sábado',
+    'Sunday': 'Domingo'
+}
+
 # Função para obter os últimos n dias úteis antes de uma data base
 def dias_uteis_anteriores(data_base, n=5):
     dias_uteis = []
@@ -23,7 +34,11 @@ def dias_uteis_anteriores(data_base, n=5):
 # Seletor de data base da previsão
 data_base = st.date_input("Selecione a data da previsão:", datetime.today())
 
-# Determinar automaticamente o dia da semana e o mês
+# Imprime o dia do mês e o dia da semana em português para conferência
+nome_dia_escolhido = dias_semana_pt[data_base.strftime("%A")]
+st.markdown(f"**Data selecionada:** {data_base.day} de {data_base.strftime('%B')} ({nome_dia_escolhido})")
+
+# Determinar automaticamente o dia da semana e o mês (para o modelo)
 dia_semana = data_base.weekday()  # 0=segunda, 6=domingo
 mes = data_base.month
 
@@ -41,7 +56,7 @@ feriado = 1 if feriado_opcao == 'Feriado' else 0
 pre_feriado = 1 if feriado_opcao == 'Pré-feriado' else 0
 pos_feriado = 1 if feriado_opcao == 'Pós-feriado' else 0
 
-# Lista amigável para o usuário escolher
+# Lista amigável para o usuário escolher prato
 nomes_visiveis = [
     'Almôndegas de carne', 'Carne ao molho', 'Carne suína',
     'Churrasquinho misto', 'Empadão', 'Estrogonofe de camarão',
@@ -78,13 +93,13 @@ if prato_selecionado != 'Nenhum selecionado':
     idx = nomes_visiveis.index(prato_selecionado)
     pratos_input[chaves_modelo[idx]] = 1
 
-# Coleta das quantidades vendidas nos 5 dias úteis anteriores
+# Coleta das quantidades vendidas nos 5 dias úteis anteriores com dias traduzidos
 st.markdown("### Informe as quantidades vendidas nos 5 dias úteis anteriores")
 dias_anteriores = dias_uteis_anteriores(data_base)
 
 quantidades = {}
 for i, dia in enumerate(reversed(dias_anteriores), 1):
-    nome_dia = dia.strftime("%A").capitalize()
+    nome_dia = dias_semana_pt[dia.strftime("%A")]
     data_formatada = dia.strftime("%d/%m/%Y")
     label = f"{nome_dia} ({data_formatada})"
     quantidades[f'POLO_QUANTIDADE_{i}'] = st.number_input(
