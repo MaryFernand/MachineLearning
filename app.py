@@ -34,27 +34,31 @@ mes = st.selectbox('Qual o mês do ano?', list(range(1, 13)))
 nomes_visiveis = [
     'Almôndegas de carne', 'Carne ao molho', 'Carne suína',
     'Churrasquinho misto', 'Empadão', 'Estrogonofe de camarão',
-    'Estrogonofe de carne', 'Estrogonofe de frango', 'Feriado (Sem prato)',
+    'Estrogonofe de carne', 'Estrogonofe de frango', 'Sem prato (feriado/sábado/domingo)',
     'Frango ao molho', 'Goulash', 'Guisado de lombo',
     'Lasanha de frango', 'Lasanha à bolonhesa', 'Peixe grelhado ao molho',
-    'Picadinho', 'Não informado (Férias)'
+    'Picadinho', 'Não informado (sem registro)'
 ]
 
 # As chaves que o modelo espera (mesma ordem dos nomes_visiveis)
 chaves_modelo = [
     'prato_almondegas_de_carne', 'prato_carne_ao_molho', 'prato_carne_suina',
     'prato_churrasquinho_misto', 'prato_empadao', 'prato_estrogonofe_de_camarao',
-    'prato_estrogonofe_de_carne', 'prato_estrogonofe_de_frango', 'prato_feriado',
+    'prato_estrogonofe_de_carne', 'prato_estrogonofe_de_frango', 'prato_sem_prato',
     'prato_frango_ao_molho', 'prato_goulash', 'prato_guisado_de_lombo',
     'prato_lasanha_de_frango', 'prato_lasanha_a_bolonhesa', 'prato_peixe_grelhado_ao_molho',
-    'prato_picadinho', 'prato_nao_informado_ferias'
+    'prato_picadinho', 'prato_nao_informado'
 ]
 
-# Selectbox para escolher prato amigável
+# Selectbox para escolher prato
 prato_selecionado = st.selectbox(
     "Prato servido (escolha o prato que mais se aproxima do que foi servido):",
     ['Nenhum selecionado'] + nomes_visiveis
 )
+
+# Dica opcional sobre prato não informado
+if prato_selecionado == 'Não informado (sem registro)':
+    st.info("Use esta opção caso o prato do dia não tenha sido registrado.")
 
 # Inicializa todos pratos com zero
 pratos_input = {chave: 0 for chave in chaves_modelo}
@@ -84,8 +88,8 @@ for i in range(5):
 if st.button("Prever quantidade"):
     if prato_selecionado == 'Nenhum selecionado':
         st.error("Por favor, selecione o prato servido antes de continuar.")
-    elif feriado == 1 or dia_semana in [5, 6]:  # Sábado = 5, Domingo = 6
-        st.warning("Neste dia não há venda de quentinhas. Previsão automática: 0")
+    elif feriado == 1 or dia_semana in [5, 6]:  # Sábado ou Domingo
+        st.warning("Neste dia não há venda de quentinhas.")
         st.success("Previsão da quantidade: 0")
     else:
         entrada = {
