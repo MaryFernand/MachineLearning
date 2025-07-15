@@ -2,11 +2,30 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import joblib
+from datetime import datetime, timedelta
 
 # Carregar o modelo salvo
 modelo = joblib.load('modelo_xgboost.pkl')
 
 st.title("Previsão de Quantidade de Refeições")
+
+# Função para obter os últimos n dias úteis antes de uma data base
+def dias_uteis_anteriores(data_base, n=5):
+    dias_uteis = []
+    delta = timedelta(days=1)
+    atual = data_base - delta
+    while len(dias_uteis) < n:
+        if atual.weekday() < 5:  # 0=segunda, 4=sexta
+            dias_uteis.append(atual)
+        atual -= delta
+    return dias_uteis
+
+# Seletor de data base da previsão
+data_base = st.date_input("Selecione a data da previsão:", datetime.today())
+
+# Determinar automaticamente o dia da semana e o mês
+dia_semana = data_base.weekday()  # 0=segunda, 6=domingo
+mes = data_base.month
 
 # Checkbox para Férias
 ferias = st.checkbox('Período de férias?')
@@ -21,14 +40,6 @@ feriado_opcao = st.radio(
 feriado = 1 if feriado_opcao == 'Feriado' else 0
 pre_feriado = 1 if feriado_opcao == 'Pré-feriado' else 0
 pos_feriado = 1 if feriado_opcao == 'Pós-feriado' else 0
-
-# Selectbox para dia da semana
-dias_semana_opcoes = ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado', 'Domingo']
-dia_semana_str = st.selectbox('Qual o dia da semana?', dias_semana_opcoes)
-dia_semana = dias_semana_opcoes.index(dia_semana_str)
-
-# Selectbox para mês
-mes = st.selectbox('Qual o mês do ano?', list(range(1, 13)))
 
 # Lista amigável para o usuário escolher
 nomes_visiveis = [
@@ -67,22 +78,18 @@ if prato_selecionado != 'Nenhum selecionado':
     idx = nomes_visiveis.index(prato_selecionado)
     pratos_input[chaves_modelo[idx]] = 1
 
-# Entrada de dias anteriores
+# Coleta das quantidades vendidas nos 5 dias úteis anteriores
 st.markdown("### Informe as quantidades vendidas nos 5 dias úteis anteriores")
-st.write(
-    "Preencha as quantidades de refeições vendidas nos 5 dias úteis anteriores (sábado e domingo não entram na análise)."
-)
+dias_anteriores = dias_uteis_anteriores(data_base)
 
-cols = st.columns(5)
 quantidades = {}
-for i in range(5):
-    with cols[i]:
-        dia = 5 - i
-        quantidades[f'POLO_QUANTIDADE_{dia}'] = st.number_input(
-            f"{dia} dia{'s' if dia > 1 else ''} atrás",
-            min_value=0, step=1, format="%d",
-            value=0
-        )
+for i, dia in enumerate(reversed(dias_anteriores), 1):
+    nome_dia = dia.strftime("%A").capitalize()
+    data_formatada = dia.strftime("%d/%m/%Y")
+    label = f"{nome_dia} ({data_formatada})"
+    quantidades[f'POLO_QUANTIDADE_{i}'] = st.number_input(
+        label, min_value=0, step=1, format="%d", value=0
+    )
 
 # Botão de previsão
 if st.button("Prever quantidade"):
