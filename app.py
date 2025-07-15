@@ -58,7 +58,7 @@ prato_selecionado = st.selectbox(
 
 # Dica opcional sobre prato não informado
 if prato_selecionado == 'Não informado (sem registro)':
-    st.info("Use esta opção caso o prato do dia não tenha sido registrado.")
+    st.info("Use esta opção se não souber qual prato foi servido no dia. Não se refere à ausência de opções na lista.")
 
 # Inicializa todos pratos com zero
 pratos_input = {chave: 0 for chave in chaves_modelo}
