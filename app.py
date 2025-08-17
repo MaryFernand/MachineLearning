@@ -146,6 +146,19 @@ if st.button("Prever quantidade"):
         pred = modelo.predict(entrada_df)
         st.success(f'Previsão da quantidade: {pred[0]:.0f}')
 
+import streamlit as st
+import pandas as pd
+import numpy as np
+import joblib
+from datetime import datetime, timedelta
+
+# Carregar o modelo salvo
+modelo = joblib.load('modelo_xgboost.pkl')
+
+st.title("Previsão de Quantidade de Refeições")
+
+# [TODO] -- aqui continua todo o seu código existente do app (datas, pratos, previsões, etc.)
+
 # --- Rodapé ---
 st.markdown("---")  # linha horizontal para separar
 rodape_texto = """
@@ -166,4 +179,3 @@ with col3:
     st.image("URL_RAW_INSTITUTO_POLITECNICO", use_column_width=True)  # substitua pelo raw
 with col4:
     st.image("URL_RAW_CNPQ", use_column_width=True)  # substitua pelo raw
-)
