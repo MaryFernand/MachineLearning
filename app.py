@@ -163,10 +163,10 @@ st.markdown(
 st.markdown(
     """
     <div style='display: flex; justify-content: space-between;'>
-        <img src='https://raw.githubusercontent.com/MaryFernand/MachineLearning/46bc13fe9f738f650cf352d3bea0c3f485a12555/ufrja.png' style='width:150px; height:auto; margin-right:10px;'/>
-        <img src='https://raw.githubusercontent.com/MaryFernand/MachineLearning/15870cebb871fda086738062b98a31a83039676b/ufrj_macae.png' style='width:150px; height:auto; margin-right:10px;'/>
-        <img src='https://raw.githubusercontent.com/MaryFernand/MachineLearning/15870cebb871fda086738062b98a31a83039676b/instituto_politecnico.png' style='width:150px; height:auto; margin-right:10px;'/>
-        <img src='https://raw.githubusercontent.com/MaryFernand/MachineLearning/15870cebb871fda086738062b98a31a83039676b/cnpq.png' style='width:150px; height:auto;'/>
+        <img src='https://raw.githubusercontent.com/MaryFernand/MachineLearning/46bc13fe9f738f650cf352d3bea0c3f485a12555/ufrja.png' style='width:auto; height:auto; margin-right:10px;'/>
+        <img src='https://raw.githubusercontent.com/MaryFernand/MachineLearning/15870cebb871fda086738062b98a31a83039676b/ufrj_macae.png' style='width:auto; height:auto; margin-right:10px;'/>
+        <img src='https://raw.githubusercontent.com/MaryFernand/MachineLearning/15870cebb871fda086738062b98a31a83039676b/instituto_politecnico.png' style='width:auto; height:auto; margin-right:10px;'/>
+        <img src='https://raw.githubusercontent.com/MaryFernand/MachineLearning/15870cebb871fda086738062b98a31a83039676b/cnpq.png' style='width:auto; height:auto;'/>
     </div>
     """,
     unsafe_allow_html=True
