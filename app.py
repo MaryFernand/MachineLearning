@@ -157,25 +157,21 @@ modelo = joblib.load('modelo_xgboost.pkl')
 
 st.title("Previsão de Quantidade de Refeições")
 
-# [TODO] -- aqui continua todo o seu código existente do app (datas, pratos, previsões, etc.)
+# --- RODAPÉ ---
+st.markdown("---")  # linha separadora
 
-# --- Rodapé ---
-st.markdown("---")  # linha horizontal para separar
+# Texto formal do rodapé
 rodape_texto = """
 Previsão de Refeições desenvolvida por Maria Fernanda Machado Santos, bolsista PIBIC/CNPq, 
 como parte do projeto Aprendizado de Máquina Aplicado à Engenharia, conduzido pelo Instituto Politécnico - UFRJ, 
 sob orientação da professora Janaina Sant'Anna Gomide Gomes.
 """
-st.markdown(f"<div style='text-align:justify'>{rodape_texto}</div>", unsafe_allow_html=True)
+st.markdown(f"<p style='text-align: justify;'>{rodape_texto}</p>", unsafe_allow_html=True)
 
-# Imagens lado a lado
+# Exibir imagens lado a lado
 col1, col2, col3, col4 = st.columns(4)
 
-with col1:
-    st.image("https://raw.githubusercontent.com/MaryFernand/MachineLearning/f6c1e4eee507b4f95738f4f61d7907cd82fec0df/ufrj.png", use_column_width=True)
-with col2:
-    st.image("URL_RAW_UFRJ_MACAE", use_column_width=True)  # substitua pelo raw
-with col3:
-    st.image("URL_RAW_INSTITUTO_POLITECNICO", use_column_width=True)  # substitua pelo raw
-with col4:
-    st.image("URL_RAW_CNPQ", use_column_width=True)  # substitua pelo raw
+col1.image("https://raw.githubusercontent.com/MaryFernand/MachineLearning/15870cebb871fda086738062b98a31a83039676b/ufrj.png", use_container_width=True)
+col2.image("https://raw.githubusercontent.com/MaryFernand/MachineLearning/15870cebb871fda086738062b98a83039676b/ufrj_macae.png", use_container_width=True)
+col3.image("https://raw.githubusercontent.com/MaryFernand/MachineLearning/15870cebb871fda086738062b98a31a83039676b/instituto_politecnico.png", use_container_width=True)
+col4.image("https://raw.githubusercontent.com/MaryFernand/MachineLearning/15870cebb871fda086738062b98a31a83039676b/cnpq.png", use_container_width=True)
