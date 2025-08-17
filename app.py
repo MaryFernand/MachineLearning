@@ -159,7 +159,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# Imagens lado a lado com tamanho fixo, container limitado à largura do texto
+# Imagens lado a lado com altura fixa e largura do container limitada
 st.markdown(
     """
     <div style='max-width:700px; margin:auto; display:flex; justify-content:space-between; align-items:center;'>
@@ -171,3 +171,4 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
+
