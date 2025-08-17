@@ -146,10 +146,10 @@ if st.button("Prever quantidade"):
         pred = modelo.predict(entrada_df)
         st.success(f'Previsão da quantidade: {pred[0]:.0f}')
 
-# --- RODAPÉ ---
-st.markdown("---")
+import streamlit as st
 
-# Texto do rodapé justificado
+# Rodapé
+st.markdown("---")
 st.markdown(
     "<p style='text-align: justify;'>"
     "Desenvolvido por Maria Fernanda Machado Santos, bolsista PIBIC/CNPq, "
@@ -159,16 +159,13 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# Imagens lado a lado com altura fixa e largura do container limitada
-st.markdown(
-    """
-    <div style='max-width:700px; margin:auto; display:flex; justify-content:space-between; align-items:center;'>
-        <img src='https://raw.githubusercontent.com/MaryFernand/MachineLearning/46bc13fe9f738f650cf352d3bea0c3f485a12555/ufrja.png' style='height:100px; width:auto;'/>
-        <img src='https://raw.githubusercontent.com/MaryFernand/MachineLearning/15870cebb871fda086738062b98a31a83039676b/ufrj_macae.png' style='height:100px; width:auto;'/>
-        <img src='https://raw.githubusercontent.com/MaryFernand/MachineLearning/15870cebb871fda086738062b98a31a83039676b/instituto_politecnico.png' style='height:100px; width:auto;'/>
-        <img src='https://raw.githubusercontent.com/MaryFernand/MachineLearning/15870cebb871fda086738062b98a31a83039676b/cnpq.png' style='height:100px; width:auto;'/>
-    </div>
-    """,
-    unsafe_allow_html=True
-)
-
+# Colunas para imagens lado a lado
+col1, col2, col3, col4 = st.columns(4)
+with col1:
+    st.image("https://raw.githubusercontent.com/MaryFernand/MachineLearning/46bc13fe9f738f650cf352d3bea0c3f485a12555/ufrja.png", width=150)
+with col2:
+    st.image("https://raw.githubusercontent.com/MaryFernand/MachineLearning/15870cebb871fda086738062b98a31a83039676b/ufrj_macae.png", width=150)
+with col3:
+    st.image("https://raw.githubusercontent.com/MaryFernand/MachineLearning/15870cebb871fda086738062b98a31a83039676b/instituto_politecnico.png", width=150)
+with col4:
+    st.image("https://raw.githubusercontent.com/MaryFernand/MachineLearning/15870cebb871fda086738062b98a31a83039676b/cnpq.png", width=150)
