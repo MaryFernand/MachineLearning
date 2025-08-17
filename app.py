@@ -159,7 +159,7 @@ st.markdown(f"<p style='text-align: justify'>{rodape_texto}</p>", unsafe_allow_h
 
 # URLs raw das imagens no GitHub
 imagens = [
-    "https://raw.githubusercontent.com/MaryFernand/MachineLearning/15870cebb871fda086738062b98a31a83039676b/ufrj.png",
+    "https://raw.githubusercontent.com/MaryFernand/MachineLearning/46bc13fe9f738f650cf352d3bea0c3f485a12555/ufrja.png",
     "https://raw.githubusercontent.com/MaryFernand/MachineLearning/15870cebb871fda086738062b98a31a83039676b/ufrj_macae.png",
     "https://raw.githubusercontent.com/MaryFernand/MachineLearning/15870cebb871fda086738062b98a31a83039676b/instituto_politecnico.png",
     "https://raw.githubusercontent.com/MaryFernand/MachineLearning/15870cebb871fda086738062b98a31a83039676b/cnpq.png"
