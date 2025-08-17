@@ -146,11 +146,20 @@ if st.button("Prever quantidade"):
         pred = modelo.predict(entrada_df)
         st.success(f'Previsão da quantidade: {pred[0]:.0f}')
 
-# Rodapé com informações formais
 st.markdown(
     """
-    ---
-    **Desenvolvido por Maria Fernanda Machado Santos, bolsista PIBIC/CNPq, como parte do projeto “Aprendizado de Máquina Aplicado à Engenharia”, conduzido pelo Instituto Politécnico da UFRJ, sob orientação da professora Janaina Sant’Anna Gomide Gomes.**
+    <div style="text-align: justify; padding-top: 20px; border-top: 1px solid #ddd;">
+        Este aplicativo foi desenvolvido por Maria Fernanda Machado Santos, bolsista PIBIC pelo CNPq 
+        (Conselho Nacional de Desenvolvimento Científico e Tecnológico), como parte do projeto 
+        Aprendizado de Máquina Aplicado à Engenharia, conduzido pelo Instituto Politécnico - UFRJ 
+        e orientado pela professora Janaina Sant'Anna Gomide Gomes.
+    </div>
+    <div style="display: flex; justify-content: space-around; padding-top: 10px;">
+        <img src="ufrj.png" alt="UFRJ" width="100">
+        <img src="ufrj_macae.png" alt="UFRJ Macaé" width="100">
+        <img src="instituto_politecnico.png" alt="Instituto Politécnico" width="100">
+        <img src="cnpq.png" alt="CNPq" width="100">
+    </div>
     """,
     unsafe_allow_html=True
 )
