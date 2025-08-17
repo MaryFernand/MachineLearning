@@ -145,3 +145,12 @@ if st.button("Prever quantidade"):
         entrada_df = pd.DataFrame([entrada])
         pred = modelo.predict(entrada_df)
         st.success(f'Previsão da quantidade: {pred[0]:.0f}')
+
+# Rodapé com informações formais
+st.markdown(
+    """
+    ---
+    **Site desenvolvido por Maria Fernanda Machado Santos, bolsista PIBIC/CNPq, como parte do projeto “Aprendizado de Máquina Aplicado à Engenharia”, conduzido pelo Instituto Politécnico da UFRJ, sob orientação da professora Janaina Sant’Anna Gomide Gomes.**
+    """,
+    unsafe_allow_html=True
+)
