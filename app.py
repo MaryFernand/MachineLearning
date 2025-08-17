@@ -148,24 +148,20 @@ if st.button("Prever quantidade"):
 
 # --- RODAPÉ ---
 st.markdown("---")
+st.markdown(
+    "Previsão de Refeições desenvolvida por Maria Fernanda Machado Santos, bolsista PIBIC/CNPq, "
+    "como parte do projeto Aprendizado de Máquina Aplicado à Engenharia, conduzido pelo Instituto Politécnico - UFRJ, "
+    "sob orientação da professora Janaina Sant'Anna Gomide Gomes."
+)
 
-# Texto formal do rodapé
-rodape_texto = """
-Previsão de Refeições desenvolvida por Maria Fernanda Machado Santos, bolsista PIBIC/CNPq, 
-como parte do projeto Aprendizado de Máquina Aplicado à Engenharia, conduzido pelo Instituto Politécnico - UFRJ, 
-sob orientação da professora Janaina Sant'Anna Gomide Gomes.
-"""
-st.markdown(f"<p style='text-align: justify'>{rodape_texto}</p>", unsafe_allow_html=True)
+# Cria 4 colunas para as imagens
+col1, col2, col3, col4 = st.columns(4)
 
-# URLs raw das imagens no GitHub
-imagens = [
-    "https://raw.githubusercontent.com/MaryFernand/MachineLearning/46bc13fe9f738f650cf352d3bea0c3f485a12555/ufrja.png",
-    "https://raw.githubusercontent.com/MaryFernand/MachineLearning/15870cebb871fda086738062b98a31a83039676b/ufrj_macae.png",
-    "https://raw.githubusercontent.com/MaryFernand/MachineLearning/15870cebb871fda086738062b98a31a83039676b/instituto_politecnico.png",
-    "https://raw.githubusercontent.com/MaryFernand/MachineLearning/15870cebb871fda086738062b98a31a83039676b/cnpq.png"
-]
-
-# Colunas para exibir imagens lado a lado
-cols = st.columns(len(imagens))
-for i, col in enumerate(cols):
-    col.image(imagens[i], width=120)  # mesmo tamanho para todas
+with col1:
+    st.image("https://raw.githubusercontent.com/MaryFernand/MachineLearning/46bc13fe9f738f650cf352d3bea0c3f485a12555/ufrja.png", use_container_width=True)
+with col2:
+    st.image("https://raw.githubusercontent.com/MaryFernand/MachineLearning/15870cebb871fda086738062b98a31a83039676b/ufrj_macae.png", use_container_width=True)
+with col3:
+    st.image("https://raw.githubusercontent.com/MaryFernand/MachineLearning/15870cebb871fda086738062b98a31a83039676b/instituto_politecnico.png", use_container_width=True)
+with col4:
+    st.image("https://raw.githubusercontent.com/MaryFernand/MachineLearning/15870cebb871fda086738062b98a31a83039676b/cnpq.png", use_container_width=True)
