@@ -146,20 +146,24 @@ if st.button("Prever quantidade"):
         pred = modelo.predict(entrada_df)
         st.success(f'Previsão da quantidade: {pred[0]:.0f}')
 
-st.markdown(
-    """
-    <div style="text-align: justify; padding-top: 20px; border-top: 1px solid #ddd;">
-        Este aplicativo foi desenvolvido por Maria Fernanda Machado Santos, bolsista PIBIC pelo CNPq 
-        (Conselho Nacional de Desenvolvimento Científico e Tecnológico), como parte do projeto 
-        Aprendizado de Máquina Aplicado à Engenharia, conduzido pelo Instituto Politécnico - UFRJ 
-        e orientado pela professora Janaina Sant'Anna Gomide Gomes.
-    </div>
-    <div style="display: flex; justify-content: space-around; padding-top: 10px;">
-        <img src="ufrj.png" alt="UFRJ" width="100">
-        <img src="ufrj_macae.png" alt="UFRJ Macaé" width="100">
-        <img src="instituto_politecnico.png" alt="Instituto Politécnico" width="100">
-        <img src="cnpq.png" alt="CNPq" width="100">
-    </div>
-    """,
-    unsafe_allow_html=True
+# --- Rodapé ---
+st.markdown("---")  # linha horizontal para separar
+rodape_texto = """
+Previsão de Refeições desenvolvida por Maria Fernanda Machado Santos, bolsista PIBIC/CNPq, 
+como parte do projeto Aprendizado de Máquina Aplicado à Engenharia, conduzido pelo Instituto Politécnico - UFRJ, 
+sob orientação da professora Janaina Sant'Anna Gomide Gomes.
+"""
+st.markdown(f"<div style='text-align:justify'>{rodape_texto}</div>", unsafe_allow_html=True)
+
+# Imagens lado a lado
+col1, col2, col3, col4 = st.columns(4)
+
+with col1:
+    st.image("https://raw.githubusercontent.com/MaryFernand/MachineLearning/f6c1e4eee507b4f95738f4f61d7907cd82fec0df/ufrj.png", use_column_width=True)
+with col2:
+    st.image("URL_RAW_UFRJ_MACAE", use_column_width=True)  # substitua pelo raw
+with col3:
+    st.image("URL_RAW_INSTITUTO_POLITECNICO", use_column_width=True)  # substitua pelo raw
+with col4:
+    st.image("URL_RAW_CNPQ", use_column_width=True)  # substitua pelo raw
 )
