@@ -148,20 +148,26 @@ if st.button("Prever quantidade"):
 
 # --- RODAPÉ ---
 st.markdown("---")
+
+# Texto do rodapé em negrito
 st.markdown(
+    "<p style='text-align: justify; font-weight: bold;'>"
     "Previsão de Refeições desenvolvida por Maria Fernanda Machado Santos, bolsista PIBIC/CNPq, "
     "como parte do projeto Aprendizado de Máquina Aplicado à Engenharia, conduzido pelo Instituto Politécnico - UFRJ, "
     "sob orientação da professora Janaina Sant'Anna Gomide Gomes."
+    "</p>",
+    unsafe_allow_html=True
 )
 
-# Cria 4 colunas para as imagens
-col1, col2, col3, col4 = st.columns(4)
-
-with col1:
-    st.image("https://raw.githubusercontent.com/MaryFernand/MachineLearning/46bc13fe9f738f650cf352d3bea0c3f485a12555/ufrja.png", use_container_width=True)
-with col2:
-    st.image("https://raw.githubusercontent.com/MaryFernand/MachineLearning/15870cebb871fda086738062b98a31a83039676b/ufrj_macae.png", use_container_width=True)
-with col3:
-    st.image("https://raw.githubusercontent.com/MaryFernand/MachineLearning/15870cebb871fda086738062b98a31a83039676b/instituto_politecnico.png", use_container_width=True)
-with col4:
-    st.image("https://raw.githubusercontent.com/MaryFernand/MachineLearning/15870cebb871fda086738062b98a31a83039676b/cnpq.png", use_container_width=True)
+# Imagens lado a lado com tamanho fixo
+st.markdown(
+    """
+    <div style='display: flex; justify-content: space-between;'>
+        <img src='https://raw.githubusercontent.com/MaryFernand/MachineLearning/46bc13fe9f738f650cf352d3bea0c3f485a12555/ufrja.png' style='width:120px; height:auto; margin-right:10px;'/>
+        <img src='https://raw.githubusercontent.com/MaryFernand/MachineLearning/15870cebb871fda086738062b98a31a83039676b/ufrj_macae.png' style='width:120px; height:auto; margin-right:10px;'/>
+        <img src='https://raw.githubusercontent.com/MaryFernand/MachineLearning/15870cebb871fda086738062b98a31a83039676b/instituto_politecnico.png' style='width:120px; height:auto; margin-right:10px;'/>
+        <img src='https://raw.githubusercontent.com/MaryFernand/MachineLearning/15870cebb871fda086738062b98a31a83039676b/cnpq.png' style='width:120px; height:auto;'/>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
