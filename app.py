@@ -149,7 +149,7 @@ if st.button("Prever quantidade"):
 # --- RODAPÉ ---
 st.markdown("---")
 
-# Texto do rodapé em negrito
+# Texto do rodapé justificado
 st.markdown(
     "<p style='text-align: justify;'>"
     "Desenvolvido por Maria Fernanda Machado Santos, bolsista PIBIC/CNPq, "
@@ -159,16 +159,15 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# Imagens lado a lado com tamanho fixo
+# Imagens lado a lado com tamanho fixo, container limitado à largura do texto
 st.markdown(
     """
-    <div style='display: flex; justify-content: space-between;'>
-        <img src='https://raw.githubusercontent.com/MaryFernand/MachineLearning/46bc13fe9f738f650cf352d3bea0c3f485a12555/ufrja.png' style='height:100px; width:auto; margin-right:10px;'/>
-        <img src='https://raw.githubusercontent.com/MaryFernand/MachineLearning/15870cebb871fda086738062b98a31a83039676b/ufrj_macae.png' style='height:100px; width:auto; margin-right:10px;'/>
-        <img src='https://raw.githubusercontent.com/MaryFernand/MachineLearning/15870cebb871fda086738062b98a31a83039676b/instituto_politecnico.png' style='height:100px; width:auto; margin-right:10px;'/>
+    <div style='max-width:700px; margin:auto; display:flex; justify-content:space-between; align-items:center;'>
+        <img src='https://raw.githubusercontent.com/MaryFernand/MachineLearning/46bc13fe9f738f650cf352d3bea0c3f485a12555/ufrja.png' style='height:100px; width:auto;'/>
+        <img src='https://raw.githubusercontent.com/MaryFernand/MachineLearning/15870cebb871fda086738062b98a31a83039676b/ufrj_macae.png' style='height:100px; width:auto;'/>
+        <img src='https://raw.githubusercontent.com/MaryFernand/MachineLearning/15870cebb871fda086738062b98a31a83039676b/instituto_politecnico.png' style='height:100px; width:auto;'/>
         <img src='https://raw.githubusercontent.com/MaryFernand/MachineLearning/15870cebb871fda086738062b98a31a83039676b/cnpq.png' style='height:100px; width:auto;'/>
     </div>
     """,
     unsafe_allow_html=True
 )
-
