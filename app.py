@@ -150,7 +150,7 @@ if st.button("Prever quantidade"):
 st.markdown(
     """
     ---
-    **Site desenvolvido por Maria Fernanda Machado Santos, bolsista PIBIC/CNPq, como parte do projeto “Aprendizado de Máquina Aplicado à Engenharia”, conduzido pelo Instituto Politécnico da UFRJ, sob orientação da professora Janaina Sant’Anna Gomide Gomes.**
+    **Desenvolvido por Maria Fernanda Machado Santos, bolsista PIBIC/CNPq, como parte do projeto “Aprendizado de Máquina Aplicado à Engenharia”, conduzido pelo Instituto Politécnico da UFRJ, sob orientação da professora Janaina Sant’Anna Gomide Gomes.**
     """,
     unsafe_allow_html=True
 )
