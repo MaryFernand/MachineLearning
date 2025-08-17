@@ -145,7 +145,11 @@ if st.button("Prever quantidade"):
         entrada_df = pd.DataFrame([entrada])
         pred = modelo.predict(entrada_df)
         st.success(f'Previsão da quantidade: {pred[0]:.0f}')
+        
+# --- RODAPÉ ---
+st.markdown("---")
 
+# Texto do rodapé justificado
 st.markdown(
     "<p style='text-align: justify;'>"
     "Desenvolvido por Maria Fernanda Machado Santos, bolsista PIBIC/CNPq, "
@@ -157,8 +161,13 @@ st.markdown(
 
 # Colunas para imagens lado a lado
 col1, col2, col3, col4 = st.columns(4)
+
 with col1:
-    st.image("https://raw.githubusercontent.com/MaryFernand/MachineLearning/46bc13fe9f738f650cf352d3bea0c3f485a12555/ufrja.png", width=150)
+    st.markdown(
+        "<img src='https://raw.githubusercontent.com/MaryFernand/MachineLearning/46bc13fe9f738f650cf352d3bea0c3f485a12555/ufrja.png' "
+        "style='width:150px; margin-top:-10px;'>",
+        unsafe_allow_html=True
+    )
 with col2:
     st.image("https://raw.githubusercontent.com/MaryFernand/MachineLearning/15870cebb871fda086738062b98a31a83039676b/ufrj_macae.png", width=150)
 with col3:
