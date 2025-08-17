@@ -146,10 +146,6 @@ if st.button("Prever quantidade"):
         pred = modelo.predict(entrada_df)
         st.success(f'Previsão da quantidade: {pred[0]:.0f}')
 
-import streamlit as st
-
-# Rodapé
-st.markdown("---")
 st.markdown(
     "<p style='text-align: justify;'>"
     "Desenvolvido por Maria Fernanda Machado Santos, bolsista PIBIC/CNPq, "
