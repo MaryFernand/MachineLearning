@@ -146,19 +146,8 @@ if st.button("Prever quantidade"):
         pred = modelo.predict(entrada_df)
         st.success(f'Previsão da quantidade: {pred[0]:.0f}')
 
-import streamlit as st
-import pandas as pd
-import numpy as np
-import joblib
-from datetime import datetime, timedelta
-
-# Carregar o modelo salvo
-modelo = joblib.load('modelo_xgboost.pkl')
-
-st.title("Previsão de Quantidade de Refeições")
-
 # --- RODAPÉ ---
-st.markdown("---")  # linha separadora
+st.markdown("---")
 
 # Texto formal do rodapé
 rodape_texto = """
@@ -166,12 +155,17 @@ Previsão de Refeições desenvolvida por Maria Fernanda Machado Santos, bolsist
 como parte do projeto Aprendizado de Máquina Aplicado à Engenharia, conduzido pelo Instituto Politécnico - UFRJ, 
 sob orientação da professora Janaina Sant'Anna Gomide Gomes.
 """
-st.markdown(f"<p style='text-align: justify;'>{rodape_texto}</p>", unsafe_allow_html=True)
+st.markdown(f"<p style='text-align: justify'>{rodape_texto}</p>", unsafe_allow_html=True)
 
-# Exibir imagens lado a lado
-col1, col2, col3, col4 = st.columns(4)
+# URLs raw das imagens no GitHub
+imagens = [
+    "https://raw.githubusercontent.com/MaryFernand/MachineLearning/15870cebb871fda086738062b98a31a83039676b/ufrj.png",
+    "https://raw.githubusercontent.com/MaryFernand/MachineLearning/15870cebb871fda086738062b98a31a83039676b/ufrj_macae.png",
+    "https://raw.githubusercontent.com/MaryFernand/MachineLearning/15870cebb871fda086738062b98a31a83039676b/instituto_politecnico.png",
+    "https://raw.githubusercontent.com/MaryFernand/MachineLearning/15870cebb871fda086738062b98a31a83039676b/cnpq.png"
+]
 
-col1.image("https://raw.githubusercontent.com/MaryFernand/MachineLearning/15870cebb871fda086738062b98a31a83039676b/ufrj.png", use_container_width=True)
-col2.image("https://raw.githubusercontent.com/MaryFernand/MachineLearning/15870cebb871fda086738062b98a83039676b/ufrj_macae.png", use_container_width=True)
-col3.image("https://raw.githubusercontent.com/MaryFernand/MachineLearning/15870cebb871fda086738062b98a31a83039676b/instituto_politecnico.png", use_container_width=True)
-col4.image("https://raw.githubusercontent.com/MaryFernand/MachineLearning/15870cebb871fda086738062b98a31a83039676b/cnpq.png", use_container_width=True)
+# Colunas para exibir imagens lado a lado
+cols = st.columns(len(imagens))
+for i, col in enumerate(cols):
+    col.image(imagens[i], width=120)  # mesmo tamanho para todas
